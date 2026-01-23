@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sunrise Shop - New Color Scheme Preview</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Outfit', sans-serif;
+        background: #f8fafb;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* Animated Mesh Background */
+      .mesh-background {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .mesh-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        mix-blend-mode: screen;
+        opacity: 0.4;
+        animation: blob 20s infinite;
+      }
+
+      .blob-1 {
+        top: -10%;
+        left: -10%;
+        width: 50%;
+        height: 50%;
+        background: #a8bfcf;
+      }
+
+      .blob-2 {
+        top: 10%;
+        right: -5%;
+        width: 45%;
+        height: 45%;
+        background: #8fa8b8;
+        animation: blob 25s infinite reverse;
+        animation-delay: -2s;
+      }
+
+      .blob-3 {
+        bottom: -5%;
+        left: 15%;
+        width: 55%;
+        height: 55%;
+        background: #7092a5;
+        animation: blob 30s infinite;
+        animation-delay: -5s;
+      }
+
+      .blob-4 {
+        top: 40%;
+        left: 30%;
+        width: 40%;
+        height: 40%;
+        background: #d4b5a0;
+        animation: blob 22s infinite alternate;
+        animation-delay: -7s;
+      }
+
+      .backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(100px);
+      }
+
+      @keyframes blob {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, -50px) scale(1.1);
+        }
+        66% {
+          transform: translate(-20px, 20px) scale(0.9);
+        }
+      }
+
+      /* Glass Effect */
+      .glass {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.45) 0%,
+          rgba(255, 255, 255, 0.25) 100%
+        );
+        backdrop-filter: blur(24px);
+        border: 1px solid rgba(168, 191, 207, 0.3);
+        box-shadow:
+          0 8px 32px rgba(112, 146, 165, 0.08),
+          0 0 1px rgba(255, 255, 255, 0.3) inset;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px;
+      }
+
+      /* Header */
+      .header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .header h1 {
+        font-size: 56px;
+        font-weight: 900;
+        background: linear-gradient(to bottom right, #2d4356, #2d435680);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 16px;
+      }
+
+      .header p {
+        font-size: 20px;
+        color: #5a7a8f;
+        font-weight: 500;
+      }
+
+      /* Color Swatches */
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-bottom: 60px;
+      }
+
+      .color-card {
+        border-radius: 24px;
+        padding: 32px;
+        transition: all 0.3s ease;
+      }
+
+      .color-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(112, 146, 165, 0.15);
+      }
+
+      .color-swatch {
+        width: 100%;
+        height: 120px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .color-name {
+        font-size: 20px;
+        font-weight: 700;
+        color: #2d4356;
+        margin-bottom: 8px;
+      }
+
+      .color-value {
+        font-size: 14px;
+        font-weight: 600;
+        color: #5a7a8f;
+        font-family: 'Courier New', monospace;
+      }
+
+      /* Component Showcase */
+      .showcase {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+        margin-bottom: 60px;
+      }
+
+      .showcase-card {
+        border-radius: 24px;
+        padding: 32px;
+      }
+
+      .showcase-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #2d4356;
+        margin-bottom: 20px;
+      }
+
+      /* Buttons */
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 8px;
+      }
+
+      .btn-primary {
+        background: #a8bfcf;
+        color: white;
+        box-shadow: 0 4px 16px rgba(168, 191, 207, 0.3);
+      }
+
+      .btn-primary:hover {
+        background: #98b0c0;
+        box-shadow: 0 6px 24px rgba(168, 191, 207, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .btn-accent {
+        background: #d4b5a0;
+        color: #2d4356;
+        box-shadow: 0 4px 16px rgba(212, 181, 160, 0.3);
+      }
+
+      .btn-accent:hover {
+        background: #c9aa95;
+        box-shadow: 0 6px 24px rgba(212, 181, 160, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        background: rgba(255, 255, 255, 0.5);
+        border: 2px solid rgba(168, 191, 207, 0.3);
+        color: #5a7a8f;
+        backdrop-filter: blur(12px);
+      }
+
+      .btn-outline:hover {
+        background: rgba(168, 191, 207, 0.1);
+        border-color: rgba(168, 191, 207, 0.5);
+      }
+
+      /* Badge */
+      .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        margin: 4px;
+      }
+
+      .badge-primary {
+        background: #a8bfcf;
+        color: white;
+      }
+
+      .badge-accent {
+        background: #d4b5a0;
+        color: #2d4356;
+      }
+
+      .badge-success {
+        background: #5fb878;
+        color: white;
+      }
+
+      /* Input */
+      .input {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: 1px solid rgba(168, 191, 207, 0.3);
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(8px);
+        font-family: 'Outfit', sans-serif;
+        font-size: 14px;
+        color: #2d4356;
+        transition: all 0.3s ease;
+        margin: 8px 0;
+      }
+
+      .input:focus {
+        outline: none;
+        border-color: #a8bfcf;
+        box-shadow: 0 0 0 4px rgba(168, 191, 207, 0.2);
+      }
+
+      .input::placeholder {
+        color: rgba(90, 122, 143, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mesh-background">
+      <div class="mesh-blob blob-1"></div>
+      <div class="mesh-blob blob-2"></div>
+      <div class="mesh-blob blob-3"></div>
+      <div class="mesh-blob blob-4"></div>
+      <div class="backdrop"></div>
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <h1>Sunrise Shop</h1>
+        <p>New Color Palette: Nude Blue & Warm Terracotta</p>
+      </div>
+
+      <div class="color-grid">
+        <div class="color-card glass">
+          <div class="color-swatch" style="background: #a8bfcf"></div>
+          <div class="color-name">Nude Blue (Primary)</div>
+          <div class="color-value">#A8BFCF</div>
+          <div class="color-value">hsl(205, 28%, 65%)</div>
+        </div>
+
+        <div class="color-card glass">
+          <div class="color-swatch" style="background: #d4b5a0"></div>
+          <div class="color-name">Warm Terracotta (Accent)</div>
+          <div class="color-value">#D4B5A0</div>
+          <div class="color-value">hsl(20, 35%, 68%)</div>
+        </div>
+
+        <div class="color-card glass">
+          <div
+            class="color-swatch"
+            style="background: linear-gradient(135deg, #a8bfcf 0%, #d4b5a0 100%)"
+          ></div>
+          <div class="color-name">Gradient Blend</div>
+          <div class="color-value">Primary → Accent</div>
+        </div>
+      </div>
+
+      <div class="showcase">
+        <div class="showcase-card glass">
+          <div class="showcase-title">Buttons</div>
+          <button class="button btn-primary">Primary Action</button>
+          <button class="button btn-accent">Accent Action</button>
+          <button class="button btn-outline">Outline</button>
+        </div>
+
+        <div class="showcase-card glass">
+          <div class="showcase-title">Badges</div>
+          <span class="badge badge-primary">Primary</span>
+          <span class="badge badge-accent">Accent</span>
+          <span class="badge badge-success">Success</span>
+        </div>
+
+        <div class="showcase-card glass">
+          <div class="showcase-title">Input Fields</div>
+          <input type="text" class="input" placeholder="Enter your text..." />
+          <input type="email" class="input" placeholder="email@example.com" />
+        </div>
+      </div>
+
+      <div class="showcase-card glass" style="text-align: center; padding: 48px">
+        <h2 style="font-size: 32px; font-weight: 800; color: #2d4356; margin-bottom: 16px">
+          Glassmorphism Design System
+        </h2>
+        <p style="font-size: 18px; color: #5a7a8f; max-width: 600px; margin: 0 auto">
+          Soft, muted nude blues create a calming, professional atmosphere. The warm terracotta
+          accent adds warmth without overwhelming. Layered glassmorphism effects provide depth and
+          sophistication.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
